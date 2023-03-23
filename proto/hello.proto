@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package auth;
+package hello;
 
-service AuthService {
+service HelloService {
   rpc Hello (Empty) returns (HelloResponse) {}
 }
 
