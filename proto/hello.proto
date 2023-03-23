@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthService {
+  rpc Hello (Empty) returns (HelloResponse) {}
+}
+
+// Hello
+message Empty{}
+
+message HelloResponse {
+    string response = 1;
+}
