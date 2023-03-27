@@ -30,7 +30,7 @@ message LoginRequest {
 message LoginResponse {
   int32 status = 1;
   repeated string error = 2;
-  string token = 3;
+  optional string token = 3;
 }
 
 // Validate
@@ -42,5 +42,5 @@ message ValidateRequest {
 message ValidateResponse {
   int32 status = 1;
   repeated string error = 2;
-  int32 userId = 3;
+  optional int32 userId = 3;
 }
