@@ -18,6 +18,7 @@ message RegisterRequest {
 message RegisterResponse {
   int32 status = 1;
   repeated string errors = 2;
+  optional string user_uuid = 3;
 }
 
 // Login
