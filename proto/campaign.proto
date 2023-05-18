@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package campaign;
 
-service CampaginService {
+service CampaignService {
   rpc Send (SendRequest) returns (SendResponse) {}
 }
 
