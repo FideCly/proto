@@ -10,7 +10,7 @@ service CampaignService {
 
 message SendRequest {
   string sender_email = 1;
-  string recipients = 2;
+  repeated string recipients = 2;
   string subject = 3;
   optional string text_data = 4;
   optional string html_data = 5;
