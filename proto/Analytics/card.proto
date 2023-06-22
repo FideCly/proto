@@ -2,17 +2,17 @@ syntax = "proto3";
 
 package analytics;
 
-service PromotionAnalyticsService {
+service CardService {
   rpc Send (SendRequest) returns (SendResponse) {}
 }
 
 message SendRequest {
     int32 id = 1;
-    string name = 2;
-    int32 checkoutLimit = 3;
-    date startAt = 4;
-    date endAt = 5;
-    bool isActive = 6;
+    int32 shopId = 2;
+    int32 userId = 2;
+    string startAt = 3;
+    string endAt = 4;
+    bool isActive = 5;
 }
 
 message SendResponse {
