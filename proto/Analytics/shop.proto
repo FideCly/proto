@@ -7,8 +7,8 @@ service ShopService {
 }
 
 message SendRequest {
-    int32 id = 1;
-    bool isActive = 6;
+  int32 id = 1;
+  bool is_active = 6;
 }
 
 message SendResponse {

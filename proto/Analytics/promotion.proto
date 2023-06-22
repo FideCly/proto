@@ -7,13 +7,13 @@ service PromotionService {
 }
 
 message SendRequest {
-    int32 id = 1;
-    int32 shopId = 2;
-    string name = 3;
-    int32 checkoutLimit = 4;
-    string startAt = 5;
-    string endAt = 6;
-    bool isActive = 7;
+  int32 id = 1;
+  int32 shop_id = 2;
+  string name = 3;
+  int32 checkout_limit = 4;
+  string start_at = 5;
+  string end_at = 6;
+  bool is_active = 7;
 }
 
 message SendResponse {
