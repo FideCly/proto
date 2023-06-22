@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package analytics;
+
+service CardService {
+  rpc BalanceByShopId (SendBalanceByShopIdRequest) returns
+  (SendBalanceByShopIdResponse) {}
+  rpc BalanceByPromotionId (SendBalanceByPromotionIdRequest) returns
+  (SendBalanceByPromotionIdResponse) {}
+  rpc ClientsByShopId (SendClientsByShopIdRequest) returns
+  (SendClientsByShopIdResponse) {}
+  rpc GetBestPromotion (SendGetBestPromotionRequest) returns
+  (SendGetBestPromotionResponse) {}
+  rpc GetWorstPromotion (SendGetWorstPromotionRequest) returns
+  (SendGetWorstPromotionResponse) {}
+}
+
+message SendBalanceByShopIdRequest {
+  int32 shop_id = 1;
+  int32 period = 2;
+}
+
+message SendBalanceByPromotionIdRequest {
+  int32 shop_id = 1;
+  int32 promotion_id = 2;
+  int32 period = 3;
+}
+
+
+
+message SendClientsByShopIdRequest {
+  string shop_id = 1;
+  int32 period = 2;
+}
+
+message SendGetBestPromotionRequest {
+  string shop_id = 1;
+  int32 period = 2;
+}
+
+message SendGetWorstPromotionRequest {
+  string shop_id = 1;
+  int32 period = 2;
+}
+
+message SendBalanceByPromotionIdResponse {
+  int32 status = 1;
+  int32 value = 2;
+  repeated string errors = 3;
+}
+
+message SendBalanceByShopIdResponse {
+  int32 status = 1;
+  int32 value = 2;
+  repeated string errors = 3;
+}
+
+message SendClientsByShopIdResponse {
+  int32 status = 1;
+  repeated string values = 2;
+  repeated string errors = 3;
+}
+
+message SendGetBestPromotionResponse {
+  int32 status = 1;
+  string label = 2;
+  repeated string values = 3;
+  repeated string errors = 4;
+}
+
+message SendGetWorstPromotionResponse {
+  int32 status = 1;
+  string label = 2;
+  repeated string values = 3;
+  repeated string errors = 4;
+}
