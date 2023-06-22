@@ -3,15 +3,15 @@ syntax = "proto3";
 package analytics;
 
 service ShopService {
-  rpc Send (SendRequest) returns (SendResponse) {}
+  rpc Send (SendShopRequest) returns (SendShopResponse) {}
 }
 
-message SendRequest {
+message SendShopRequest {
   int32 id = 1;
-  bool is_active = 6;
+  bool is_active = 2;
 }
 
-message SendResponse {
+message SendShopResponse {
   int32 status = 1;
   repeated string errors = 2;
 }

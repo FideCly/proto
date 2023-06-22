@@ -3,19 +3,19 @@ syntax = "proto3";
 package analytics;
 
 service CardService {
-  rpc Send (SendRequest) returns (SendResponse) {}
+  rpc Send (SendCardRequest) returns (SendCardResponse) {}
 }
 
-message SendRequest {
+message SendCardRequest {
   int32 id = 1;
   int32 shop_id = 2;
-  int32 user_id = 2;
-  string start_at = 3;
-  string end_at = 4;
-  bool is_active = 5;
+  int32 user_id = 3;
+  string start_at = 4;
+  string end_at = 5;
+  bool is_active = 6;
 }
 
-message SendResponse {
+message SendCardResponse {
   int32 status = 1;
   repeated string errors = 2;
 }
