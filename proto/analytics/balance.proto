@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package analytics;
 
-service BalancesService {
+service BalanceService {
   rpc Send (SendBalanceRequest) returns (SendBalanceResponse) {}
 }
 
