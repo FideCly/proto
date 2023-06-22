@@ -3,10 +3,10 @@ syntax = "proto3";
 package analytics;
 
 service PromotionService {
-  rpc Send (SendRequest) returns (SendResponse) {}
+  rpc Send (SendPromotionRequest) returns (SendPromotionResponse) {}
 }
 
-message SendRequest {
+message SendPromotionRequest {
   int32 id = 1;
   int32 shop_id = 2;
   string name = 3;
@@ -16,7 +16,7 @@ message SendRequest {
   bool is_active = 7;
 }
 
-message SendResponse {
+message SendPromotionResponse {
   int32 status = 1;
   repeated string errors = 2;
 }
