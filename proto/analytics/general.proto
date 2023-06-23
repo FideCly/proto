@@ -3,77 +3,63 @@ syntax = "proto3";
 package analytics;
 
 service AnalyticsService {
-  rpc GetTotalCheckoutByShopId (GetTotalCheckoutByShopIdRequest) returns
-  (GetTotalCheckoutByShopIdResponse) {}
-  rpc GetTotalCheckoutByPromotionId (GetTotalCheckoutByPromotionIdRequest)
-  returns (GetTotalCheckoutByPromotionIdResponse) {}
-  rpc GetTotalClientsByShopId (GetTotalClientsByShopIdRequest) returns
-  (GetTotalClientsOfShopIdResponse) {}
-  rpc GetBestPromotion (GetBestPromotionRequest) returns
-  (GetBestPromotionResponse) {}
-  rpc GetWorstPromotion (GetWorstPromotionRequest) returns
-  (GetWorstPromotionResponse) {}
+  rpc GetAffluence (GetAffluenceRequest) returns
+  (GetAffluenceResponse) {}
+  rpc GetPromotionCheckoutsCount (GetPromotionCheckoutsCountRequest)
+  returns (GetPromotionCheckoutsCountResponse) {}
+  rpc GetClientsCount (GetClientsCountRequest) returns
+  (GetClientsCountResponse) {}
+  rpc GetPromotionsRanking (GetPromotionsRankingRequest) returns
+  (GetPromotionsRankingResponse) {}
+
 }
 
-message GetTotalCheckoutByShopIdRequest {
+message GetAffluenceRequest {
   int32 shop_id = 1;
   string start_date = 2;
   string end_date = 3;
 }
 
-message GetTotalCheckoutByShopIdResponse {
+message GetAffluenceResponse {
   int32 status = 1;
   int32 checkout_value = 2;
   repeated string errors = 3;
 }
 
-message GetTotalCheckoutByPromotionIdRequest {
+message GetPromotionCheckoutsCountRequest {
   int32 shop_id = 1;
   int32 promotion_id = 2;
   string start_date = 3;
   string end_date = 4;
 }
 
-message GetTotalCheckoutByPromotionIdResponse {
+message GetPromotionCheckoutsCountResponse {
   int32 status = 1;
   int32 checkout_value = 2;
   repeated string errors = 3;
 }
 
-message GetTotalClientsByShopIdRequest {
+message GetClientsCountRequest {
   string shop_id = 1;
   string start_date = 2;
   string end_date = 3;
 }
 
-message GetTotalClientsOfShopIdResponse {
+message GetClientsCountResponse {
   int32 status = 1;
   int32 total_users = 2;
   repeated string errors = 3;
 }
 
-message GetBestPromotionRequest {
+message GetPromotionsRankingRequest {
   string shop_id = 1;
   string start_date = 2;
   string end_date = 3;
 }
 
-message GetBestPromotionResponse {
+message GetPromotionsRankingResponse {
   int32 status = 1;
-  string promotion_name = 2;
-  int32 checkout_value = 3;
-  repeated string errors = 4;
-}
-
-message GetWorstPromotionRequest {
-  string shop_id = 1;
-  string start_date = 2;
-  string end_date = 3;
-}
-
-message GetWorstPromotionResponse {
-  int32 status = 1;
-  string promotion_name = 2;
-  int32 checkout_value = 3;
+  repeated string promotion_names = 2;
+  repeated int32 checkout_values = 3;
   repeated string errors = 4;
 }
