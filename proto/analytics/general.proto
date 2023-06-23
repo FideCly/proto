@@ -22,7 +22,7 @@ message GetAffluenceRequest {
 
 message GetAffluenceResponse {
   int32 status = 1;
-  int32 checkout_value = 2;
+  int32 value = 2;
   repeated string errors = 3;
 }
 
@@ -35,7 +35,7 @@ message GetPromotionCheckoutsCountRequest {
 
 message GetPromotionCheckoutsCountResponse {
   int32 status = 1;
-  int32 checkout_value = 2;
+  int32 value = 2;
   repeated string errors = 3;
 }
 
@@ -47,7 +47,7 @@ message GetClientsCountRequest {
 
 message GetClientsCountResponse {
   int32 status = 1;
-  int32 total_users = 2;
+  int32 value = 2;
   repeated string errors = 3;
 }
 
@@ -60,6 +60,6 @@ message GetPromotionsRankingRequest {
 message GetPromotionsRankingResponse {
   int32 status = 1;
   repeated string promotion_names = 2;
-  repeated int32 checkout_values = 3;
+  repeated int32 values = 3;
   repeated string errors = 4;
 }
