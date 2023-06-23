@@ -2,75 +2,78 @@ syntax = "proto3";
 
 package analytics;
 
-service CardService {
-  rpc BalanceByShopId (SendBalanceByShopIdRequest) returns
-  (SendBalanceByShopIdResponse) {}
-  rpc BalanceByPromotionId (SendBalanceByPromotionIdRequest) returns
-  (SendBalanceByPromotionIdResponse) {}
-  rpc ClientsByShopId (SendClientsByShopIdRequest) returns
-  (SendClientsByShopIdResponse) {}
-  rpc GetBestPromotion (SendGetBestPromotionRequest) returns
-  (SendGetBestPromotionResponse) {}
-  rpc GetWorstPromotion (SendGetWorstPromotionRequest) returns
-  (SendGetWorstPromotionResponse) {}
+service AnalyticsService {
+  rpc GetTotalCheckoutByShopId (GetTotalCheckoutByShopIdRequest) returns
+  (GetTotalCheckoutByShopIdResponse) {}
+  rpc GetTotalCheckoutByPromotionId (GetTotalCheckoutByPromotionIdRequest)
+  returns (GetTotalCheckoutByPromotionIdResponse) {}
+  rpc GetTotalClientsByShopId (GetTotalClientsByShopIdRequest) returns
+  (GetTotalClientsOfShopIdResponse) {}
+  rpc GetBestPromotion (GetBestPromotionRequest) returns
+  (GetBestPromotionResponse) {}
+  rpc GetWorstPromotion (GetWorstPromotionRequest) returns
+  (GetWorstPromotionResponse) {}
 }
 
-message SendBalanceByShopIdRequest {
+message GetTotalCheckoutByShopIdRequest {
   int32 shop_id = 1;
-  int32 period = 2;
+  string start_date = 2;
+  string end_date = 3;
 }
 
-message SendBalanceByPromotionIdRequest {
+message GetTotalCheckoutByShopIdResponse {
+  int32 status = 1;
+  int32 checkout_value = 2;
+  repeated string errors = 3;
+}
+
+message GetTotalCheckoutByPromotionIdRequest {
   int32 shop_id = 1;
   int32 promotion_id = 2;
-  int32 period = 3;
+  string start_date = 3;
+  string end_date = 4;
 }
 
-
-
-message SendClientsByShopIdRequest {
-  string shop_id = 1;
-  int32 period = 2;
-}
-
-message SendGetBestPromotionRequest {
-  string shop_id = 1;
-  int32 period = 2;
-}
-
-message SendGetWorstPromotionRequest {
-  string shop_id = 1;
-  int32 period = 2;
-}
-
-message SendBalanceByPromotionIdResponse {
+message GetTotalCheckoutByPromotionIdResponse {
   int32 status = 1;
-  int32 value = 2;
+  int32 checkout_value = 2;
   repeated string errors = 3;
 }
 
-message SendBalanceByShopIdResponse {
+message GetTotalClientsByShopIdRequest {
+  string shop_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+
+message GetTotalClientsOfShopIdResponse {
   int32 status = 1;
-  int32 value = 2;
+  int32 total_users = 2;
   repeated string errors = 3;
 }
 
-message SendClientsByShopIdResponse {
-  int32 status = 1;
-  repeated string values = 2;
-  repeated string errors = 3;
+message GetBestPromotionRequest {
+  string shop_id = 1;
+  string start_date = 2;
+  string end_date = 3;
 }
 
-message SendGetBestPromotionResponse {
+message GetBestPromotionResponse {
   int32 status = 1;
-  string label = 2;
-  repeated string values = 3;
+  string promotion_name = 2;
+  int32 checkout_value = 3;
   repeated string errors = 4;
 }
 
-message SendGetWorstPromotionResponse {
+message GetWorstPromotionRequest {
+  string shop_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+
+message GetWorstPromotionResponse {
   int32 status = 1;
-  string label = 2;
-  repeated string values = 3;
+  string promotion_name = 2;
+  int32 checkout_value = 3;
   repeated string errors = 4;
 }
