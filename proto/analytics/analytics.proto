@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+package analytics;
+
+// Balance Service
+service BalanceService {
+  rpc Send (SendBalanceRequest) returns 
+  (SendBalanceResponse) {}
+}
+  
+message SendBalanceRequest {
+  int32 id = 1;
+  int32 promotion_id = 2;
+  int32 card_id = 3;
+  int32 counter = 4;
+  bool is_active = 5;
+}
+  
+message SendBalanceResponse {
+  int32 status = 1;
+  repeated string errors = 2;
+}
+
+// Card Service
+service CardService {
+  rpc Send (SendCardRequest) returns (SendCardResponse) {}
+}
+  
+message SendCardRequest {
+  int32 id = 1;
+  int32 shop_id = 2;
+  int32 user_id = 3;
+  string start_at = 4;
+  string end_at = 5;
+  bool is_active = 6;
+}
+  
+message SendCardResponse {
+  int32 status = 1;
+  repeated string errors = 2;
+}
+  
+
+// General Service
+service AnalyticsService {
+  rpc GetAffluence (GetAffluenceRequest) 
+  returns (GetAffluenceResponse) {}
+  rpc GetPromotionCheckoutsCount (GetPromotionCheckoutsCountRequest)
+  returns (GetPromotionCheckoutsCountResponse) {}
+  rpc GetClientsCount (GetClientsCountRequest) returns
+  (GetClientsCountResponse) {}
+  rpc GetPromotionsRanking (GetPromotionsRankingRequest) returns
+  (GetPromotionsRankingResponse) {}
+}
+  
+message GetAffluenceRequest {
+  int32 shop_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+  
+message GetAffluenceResponse {
+  int32 status = 1;
+  int32 value = 2;
+  repeated string errors = 3;
+}
+  
+message GetPromotionCheckoutsCountRequest {
+  int32 shop_id = 1;
+  int32 promotion_id = 2;
+  string start_date = 3;
+  string end_date = 4;
+}
+  
+message GetPromotionCheckoutsCountResponse {
+  int32 status = 1;
+  int32 value = 2;
+  repeated string errors = 3;
+}
+  
+message GetClientsCountRequest {
+  int32 shop_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+  
+message GetClientsCountResponse {
+  int32 status = 1;
+  int32 value = 2;
+  repeated string errors = 3;
+}
+  
+message GetPromotionsRankingRequest {
+  int32 shop_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+  
+message GetPromotionsRankingResponse {
+  int32 status = 1;
+  repeated string promotion_names = 2;
+  repeated int32 values = 3;
+  repeated string errors = 4;
+}
+  
+
+// Promotion Service
+service PromotionService {
+  rpc Send (SendPromotionRequest) returns (SendPromotionResponse) {}
+}
+  
+message SendPromotionRequest {
+  int32 id = 1;
+  int32 shop_id = 2;
+  string name = 3;
+  int32 checkout_limit = 4;
+  string start_at = 5;
+  string end_at = 6;
+  bool is_active = 7;
+}
+  
+message SendPromotionResponse {
+  int32 status = 1;
+  repeated string errors = 2;
+}
+  
+
+// Shop Service
+service ShopService {
+  rpc Send (SendShopRequest) returns (SendShopResponse) {}
+}
+  
+message SendShopRequest {
+  int32 id = 1;
+  bool is_active = 2;
+}
+  
+message SendShopResponse {
+  int32 status = 1;
+  repeated string errors = 2;
+}
+  
