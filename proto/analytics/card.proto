@@ -10,8 +10,6 @@ message SendCardRequest {
   int32 id = 1;
   int32 shop_id = 2;
   int32 user_id = 3;
-  string start_at = 4;
-  string end_at = 5;
   bool is_active = 6;
 }
 
